@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Project;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -25,17 +26,49 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <p>
+        <?= Html::a(Yii::t('app', 'New Testimonial'), ['testimonial/create', 'project_id' => $model->id], ['class' => 'btn text-primary ']) ?>
 
+    </p>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'name',
-            'tech_stack:ntext',
-            'description:ntext',
+            [
+                'label' => Yii::t('app', 'Image'),
+                'format' => 'raw',
+                'value' => function ($model) {
+                    /* @var $model \common\models\Project */
+                    if (!$model->hasImages()) {
+                        return null;
+                    }
+                    $imagesHtml = "";
+                    foreach ($model->images as $image) {
+                        $imagesHtml .= Html::img(
+                            $image->file->absoluteUrl(),
+                            [
+                                'alt' => 'Demonstration of the user interface',
+                                'height' => '200',
+                                'class' => 'project-view__image',
+                            ],
+
+
+                        );
+                    }
+                    return $imagesHtml;
+                }
+            ],
+            'tech_stack:raw',
+            'description:raw',
             'start_date',
-            'end_date',
+            'end_date'
         ],
     ]) ?>
+    <h2><?= Yii::t('app', 'Testimonials') ?></h2>
+
+    <?php foreach ($model->testimonials as $testimonial): ?>
+        <div><?= Html::a($testimonial->title, ['testimonial/view', 'id' => $testimonial->id]) ?></div>
+    <?php endforeach; ?>
 
 </div>
