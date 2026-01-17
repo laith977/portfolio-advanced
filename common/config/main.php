@@ -12,6 +12,9 @@ return [
         ],
         'formatter' => [
             'dateFormat' => 'yyyy-MM-dd',
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager'
         ]
     ],
 ];

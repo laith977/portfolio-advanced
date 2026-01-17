@@ -39,10 +39,21 @@ AppAsset::register($this);
         if (Yii::$app->user->isGuest) {
             $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
         } else {
-            $menuItems = [['label' => 'Home', 'url' => ['/site/index']]];
-            $menuItems[] = ['label' => Yii::t('app', 'Projects'), 'url' => ['/project/index']];
-            $menuItems[] = ['label' => Yii::t('app', 'Testimonials'), 'url' => ['/testimonial/index']];
-            $menuItems[] = ['label' => Yii::t('app', 'Blog Posts'), 'url' => ['/blog/post/index']];
+            $menuItems[] = [
+                'label' => Yii::t('app', 'Projects'),
+                'url' => ['/project/index'],
+                'visible' => Yii::$app->user->can('manageProjects')
+            ];
+            $menuItems[] = [
+                'label' => Yii::t('app', 'Testimonials'),
+                'url' => ['/testimonial/index'],
+                'visible' => Yii::$app->user->can('manageTestimonials')
+            ];
+            $menuItems[] = [
+                'label' => Yii::t('app', 'Blog Posts'),
+                'url' => ['/blog/post/index'],
+                'visible' => Yii::$app->user->can('manageBlogs')
+            ];
         }
 
 

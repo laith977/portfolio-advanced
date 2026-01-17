@@ -7,6 +7,7 @@ use backend\models\ProjectSearch;
 use backend\models\TestimonialSearch;
 use common\models\ProjectImage;
 use Yii;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -26,6 +27,20 @@ class ProjectController extends Controller
         return array_merge(
             parent::behaviors(),
             [
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'roles' => ['manageProjects'],
+                        ],
+                        [
+                            'allow' => true,
+                            'roles' => ['viewProject'],
+                            'actions' => ['view']
+                        ]
+                    ]
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
