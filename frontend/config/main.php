@@ -12,6 +12,11 @@ return [
     'name' => 'Laith page',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'modules' => [
+        'blog' => [
+            'class' => 'frontend\modules\blog\module'
+        ]
+    ],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
@@ -43,7 +48,10 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [],
+            'rules' => [
+                'blog' => 'blog/post/index',
+                'blog/post/<slug>' => 'blog/post/view'
+            ],
         ],
         'assetManager' => [
             'appendTimestamp' => true

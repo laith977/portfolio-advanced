@@ -162,3 +162,13 @@ a.desc:after {
     object-fit: cover;
     border-radius: 50%;
 }
+
+.post{
+    margin-bottom: 8px;
+}
+
+.post-view__date{
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 24px;
+}
