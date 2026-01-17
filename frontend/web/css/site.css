@@ -101,3 +101,64 @@ a.desc:after {
 {
     text-decoration: none;
 }
+
+.side-index__photo{
+    width:100%;
+    max-width: 400px;
+}
+.side-index__h1{
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+@media( min-width:768px){
+    .side-index__h1{
+    font-size: 3rem;
+
+    }
+}
+
+.project{
+    max-width: 300px;
+    margin-bottom: 32px;
+    margin-right: 28px;
+}
+.project__image{
+    width: 100%;
+    border-radius: 10px;
+    height: 200px;
+    object-fit: cover;
+}
+.project__link{
+    text-decoration: none;
+    color:#000;
+}
+
+.project__link:hover{
+    text-decoration: none;
+    color: #000 ;
+}
+.project-items{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.project-view__dates, .project-view__tech-stack, .project-view__description{
+    margin-bottom: 16px;
+}
+.project-view__carousel-images{
+    width: 1200px !important;
+    height: 700px !important;
+    margin-bottom: 32px;
+}
+
+.project-view__testimonial {
+    margin-bottom:32px;
+
+}
+.project-view__testimonial-image {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
